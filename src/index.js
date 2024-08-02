@@ -15,6 +15,14 @@ const io = new Server(server, {
   },
 });
 
+io.on("connection", (socket) => {
+  console.log("Se ha conectado un usuario");
+
+  socket.on("message", (msg) => io.emit("message", msg));
+
+  socket.on("disconnect", () => console.log("Se ha desconectado un usuario"));
+});
+
 server.listen(PORT, () =>
   console.log(`Servidor corriendo en el puerto ${PORT}`)
 );
