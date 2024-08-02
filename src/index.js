@@ -4,6 +4,7 @@ import { Server } from "socket.io";
 
 import { PORT, ORIGIN } from "./config/config.js";
 import { db } from "./db/db.js";
+import { connection } from "./chat/chat.js";
 
 await db();
 
@@ -15,13 +16,7 @@ const io = new Server(server, {
   },
 });
 
-io.on("connection", (socket) => {
-  console.log("Se ha conectado un usuario");
-
-  socket.on("message", (msg) => io.emit("message", msg));
-
-  socket.on("disconnect", () => console.log("Se ha desconectado un usuario"));
-});
+connection(io);
 
 server.listen(PORT, () =>
   console.log(`Servidor corriendo en el puerto ${PORT}`)
