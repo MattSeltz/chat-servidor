@@ -25,7 +25,7 @@ export const register = async (req, res) => {
 
   await usuarios.save();
 
-  res.json(existingUser);
+  res.json(usuarios);
 };
 
 export const login = async (req, res) => {

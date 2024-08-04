@@ -6,9 +6,9 @@ const mensajesSchema = new Schema(
       type: String,
       required: true,
     },
-    usuarios: [{ type: Schema.Types.ObjectId, ref: "Usuarios" }],
+    usuarios: [{ type: Schema.Types.ObjectId, ref: "Usuario" }],
   },
   { timestamps: true }
 );
 
-export const Mensajes = model("Mensajes", mensajesSchema);
+export const Mensajes = model("Mensaje", mensajesSchema);

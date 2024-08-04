@@ -15,10 +15,10 @@ const usuariosSchema = new Schema(
       type: String,
       required: true,
     },
-    chats: [{ type: Schema.Types.ObjectId, ref: "Chats" }],
-    grupos: [{ type: Schema.Types.ObjectId, ref: "Grupos" }],
+    chats: [{ type: Schema.Types.ObjectId, ref: "Chat" }],
+    grupos: [{ type: Schema.Types.ObjectId, ref: "Grupo" }],
   },
   { timestamps: true }
 );
 
-export const Usuarios = model("Usuarios", usuariosSchema);
+export const Usuarios = model("Usuario", usuariosSchema);

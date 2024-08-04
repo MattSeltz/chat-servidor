@@ -7,10 +7,10 @@ const gruposSchema = new Schema(
       required: true,
       unique: true,
     },
-    usuarios: [{ type: Schema.Types.ObjectId, ref: "Usuarios" }],
-    mensajes: [{ type: Schema.Types.ObjectId, ref: "Mensajes" }],
+    usuarios: [{ type: Schema.Types.ObjectId, ref: "Usuario" }],
+    mensajes: [{ type: Schema.Types.ObjectId, ref: "Mensaje" }],
   },
   { timestamps: true }
 );
 
-export const Grupos = model("Grupos", gruposSchema);
+export const Grupos = model("Grupo", gruposSchema);
