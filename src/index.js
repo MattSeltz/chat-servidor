@@ -9,6 +9,7 @@ import { db } from "./db/db.js";
 import { connection } from "./chat/chat.js";
 import authRoutes from "./routes/auth.routes.js";
 import usuariosRoutes from "./routes/usuarios.routes.js";
+import chatsRoutes from "./routes/chats.routes.js";
 
 await db();
 
@@ -30,6 +31,7 @@ connection(io);
 
 app.use("/auth", authRoutes);
 app.use("/usuarios", usuariosRoutes);
+app.use("/chats", chatsRoutes);
 
 server.listen(PORT, () =>
   console.log(`Servidor corriendo en el puerto ${PORT}`)
