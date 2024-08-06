@@ -4,12 +4,15 @@ export const connection = (io) => {
   io.on("connection", async (socket) => {
     console.log("Se ha conectado un usuario");
 
-    const id = socket.handshake.auth.token;
+    const id = socket.handshake.auth.user;
+    const chat = socket.handshake.auth.chat;
 
-    const usuarios = await Usuarios.findById(id);
+    socket.join(chat);
+
+    const usuarios = await Usuarios.findById(id).populate("chats");
 
     socket.on("message", (msg) => {
-      io.emit("message", { msg, id: usuarios });
+      io.to(chat).emit("message", { msg, id: usuarios });
     });
 
     socket.on("disconnect", () => console.log("Se ha desconectado un usuario"));

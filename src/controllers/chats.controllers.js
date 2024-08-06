@@ -2,7 +2,7 @@ import { Chats } from "../models/chats.models.js";
 
 export const getData = async (req, res) => {
   try {
-    const chats = await Chats.find();
+    const chats = await Chats.find().populate("usuarios");
     res.json(chats);
   } catch (error) {
     console.error(error.message);
@@ -14,7 +14,7 @@ export const getOneData = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const chats = await Chats.findById(id);
+    const chats = await Chats.findById(id).populate("usuarios");
     res.json(chats);
   } catch (error) {
     console.error(error.message);
