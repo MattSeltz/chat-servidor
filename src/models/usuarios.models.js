@@ -16,7 +16,6 @@ const usuariosSchema = new Schema(
       required: true,
     },
     chats: [{ type: Schema.Types.ObjectId, ref: "Chat" }],
-    grupos: [{ type: Schema.Types.ObjectId, ref: "Grupo" }],
   },
   { timestamps: true }
 );
